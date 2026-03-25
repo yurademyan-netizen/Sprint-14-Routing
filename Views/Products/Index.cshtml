@@ -5,9 +5,8 @@
 }
 
 <h1>View</h1>
-
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary btn-lg">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -39,11 +38,11 @@
             <td>
              <nav class="navbar bg-body-tertiary">
                     <div class="d-flex">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "@class = btn btn-outline-success mr-2 " })
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "@class = btn btn-outline-success shadow mr-2 " })
 
-                        @Html.ActionLink("View ", "View ", new { id = item.Id }, new { @class = "@class = btn btn-outline-info mr-2 " })
+                            @Html.ActionLink("View ", "View ", new { id = item.Id }, new { @class = "@class = btn btn-outline-info shadow mr-2 " })
 
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "@class = btn btn-outline-danger " })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "@class = btn btn-outline-danger shadow " })
                     </div>
              </nav>
         </tr>
