@@ -1,26 +1,33 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using ProductsWithRouting.Models;
+using ProductsWithRouting.Services;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using ProductsWithRouting.Models;
-using System.Diagnostics;
-using ProductsWithRouting.Services;
 
 namespace ProductsWithRouting.Controllers
 {
     public class UsersController : Controller
     {
-        private List<User> myUsers;
+        private readonly List<User> myUsers;
 
         public UsersController(Data data)
         {
             myUsers = data.Users;
         }
 
-        public IActionResult Index(string id)
+        [HttpPost]
+        public IActionResult Index([FromBody] string id)
         {
+            if (string.IsNullOrEmpty(id) || id != "df2323eoT")
+            {
+                return Unauthorized();
+            }
+
             return View(myUsers);
         }
 
