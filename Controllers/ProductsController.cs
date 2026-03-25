@@ -73,8 +73,14 @@ namespace ProductsWithRouting.Controllers
 
         public IActionResult Delete(int id)
         {
-            //Please, add your implementation of the method
-            return View("Index"/*TODO: pass corresponding product here*/);
+            Product product = myProducts.FirstOrDefault(x => x.Id == id);
+
+            if (product != null)
+            {
+                myProducts.Remove(product);
+            }
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult Error()
