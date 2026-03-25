@@ -45,14 +45,25 @@ namespace ProductsWithRouting.Controllers
         [HttpPost]
         public IActionResult Create(Product product)
         {
-            //Please, add your implementation of the method
-            return View(/*TODO: pass corresponding product here*/);
+            if(product.Name == null || product.Description == null)
+            {
+                ViewBag.ErrorMessage = "Please fill in all fields.!";
+                return View(product); 
+            }
+
+            myProducts.Add(product);
+
+            return RedirectToAction("Index");
+             
         }
 
         public IActionResult Create()
         {
-            //Please, add your implementation of the method
-            return View(/*TODO: pass corresponding product here*/);
+            Product newProduct = new Product();
+
+            newProduct.Id = myProducts.Any() ? myProducts.Max(x => x.Id) + 1 : 1;
+
+            return View(newProduct);
         }
 
         public IActionResult Delete(int id)
