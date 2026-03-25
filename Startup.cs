@@ -53,6 +53,17 @@ namespace ProductsWithRouting
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "products_new",
+                    pattern: "products/new",
+                    defaults: new { controller = "Products", action = "Create" });
+
+                endpoints.MapControllerRoute(
+                    name: "products_create",
+                    pattern: "products/create",
+                    defaults: new { controller = "Products", action = "Create" });
+
             });
         }
     }
