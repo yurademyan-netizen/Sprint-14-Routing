@@ -24,10 +24,12 @@ namespace ProductsWithRouting.Controllers
             return View(myProducts);
         }
 
+        [Route("products/{id:int}")]
         public IActionResult View(int id)
         {
-            //Please, add your implementation of the method
-            return View(/*TODO: pass corresponding product here*/);
+            Product product = myProducts.FirstOrDefault(x => x.Id == id);
+
+            return View(product);
         }
         [HttpGet]
         public IActionResult Edit(int id)
