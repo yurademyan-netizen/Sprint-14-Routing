@@ -8,12 +8,15 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProductsWithRouting.Controllers;
 using ProductsWithRouting.Services;
 
 namespace ProductsWithRouting
 {
     public class Startup
     {
+        private const string PRODUCTS = "Products";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -51,18 +54,18 @@ namespace ProductsWithRouting
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-                endpoints.MapControllerRoute(
                     name: "products_new",
                     pattern: "products/new",
-                    defaults: new { controller = "Products", action = "Create" });
+                    defaults: new { controller = PRODUCTS, action = "Create" });
 
                 endpoints.MapControllerRoute(
                     name: "products_create",
                     pattern: "products/create",
-                    defaults: new { controller = "Products", action = "Create" });
+                    defaults: new { controller = PRODUCTS, action = "Create" });
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
 
             });
         }

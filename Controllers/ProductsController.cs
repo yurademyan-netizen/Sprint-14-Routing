@@ -19,6 +19,11 @@ namespace ProductsWithRouting.Controllers
             myProducts = data.Products;
         }
 
+        [HttpGet]
+        [Route("products/index")]
+        [Route("items/index")]
+        [Route("items")]
+        [Route("products")]
         public IActionResult Index(int filterId, string filtername)
         {
             return View(myProducts);
@@ -31,12 +36,14 @@ namespace ProductsWithRouting.Controllers
 
             return View(product);
         }
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
             //Please, add your implementation of the method
             return View(/*TODO: pass corresponding product here*/);
         } 
+
         [HttpPost]
         public IActionResult Edit(Product product)
         {
