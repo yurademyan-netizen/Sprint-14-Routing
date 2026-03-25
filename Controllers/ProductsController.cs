@@ -24,9 +24,20 @@ namespace ProductsWithRouting.Controllers
         [Route("items/index")]
         [Route("items")]
         [Route("products")]
-        public IActionResult Index(int filterId, string filtername)
+        public IActionResult Index([FromQuery]int filterId, [FromQuery]string filtername)
         {
-            return View(myProducts);
+            IEnumerable<Product> filteredProducts = myProducts;
+
+            if (filterId != 0)
+            {
+                filteredProducts = filteredProducts.Where(x => x.Id == filterId);
+            }
+            if (filtername != null)
+            {
+                filteredProducts = filteredProducts.Where(x => x.Name.Contains(filtername));
+            }
+
+            return View(filteredProducts);
         }
 
         [Route("products/{id:int}")]
