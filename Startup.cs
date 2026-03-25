@@ -63,10 +63,10 @@ namespace ProductsWithRouting
                     pattern: "products/create",
                     defaults: new { controller = PRODUCTS, action = "Create" });
 
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
             });
         }
     }

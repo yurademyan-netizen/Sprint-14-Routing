@@ -40,15 +40,20 @@ namespace ProductsWithRouting.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            //Please, add your implementation of the method
-            return View(/*TODO: pass corresponding product here*/);
+            Product product = myProducts.FirstOrDefault(x => x.Id == id);
+
+            return View(product);
         } 
 
         [HttpPost]
         public IActionResult Edit(Product product)
         {
-            //Please, add your implementation of the method
-            return View(/*TODO: pass corresponding product here*/);
+            var existingProduct = myProducts.FirstOrDefault(x => x.Id == product.Id);
+
+            existingProduct.Name = product.Name;
+            existingProduct.Description = product.Description;
+
+            return RedirectToAction("Index");
         } 
         
         [HttpPost]
@@ -64,8 +69,7 @@ namespace ProductsWithRouting.Controllers
 
             myProducts.Add(product);
 
-            return RedirectToAction("Index");
-             
+            return RedirectToAction("Index"); 
         }
 
         [HttpGet]
