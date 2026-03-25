@@ -43,6 +43,8 @@ namespace ProductsWithRouting.Controllers
         } 
         
         [HttpPost]
+        //[Route("Products/create")]
+        //[Route("Products/new")]
         public IActionResult Create(Product product)
         {
             if(product.Name == null || product.Description == null)
@@ -57,6 +59,9 @@ namespace ProductsWithRouting.Controllers
              
         }
 
+        [HttpGet]
+        //[Route("Products/create")]
+        //[Route("Products/new")]
         public IActionResult Create()
         {
             Product newProduct = new Product();
