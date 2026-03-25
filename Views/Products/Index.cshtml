@@ -37,17 +37,15 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                    
+             <nav class="navbar bg-body-tertiary">
+                    <div class="d-flex">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "@class = btn btn-outline-success mr-2 " })
 
-                    <nav class="navbar bg-body-tertiary">
-                        <div class="d-flex">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "@class = btn btn-outline-success mr-2 " })
+                        @Html.ActionLink("View ", "View ", new { id = item.Id }, new { @class = "@class = btn btn-outline-info mr-2 " })
 
-                            @Html.ActionLink("View ", "View ", new { id = item.Id }, new { @class = "@class = btn btn-outline-info mr-2 " })
-
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "@class = btn btn-outline-danger " })
-                        </div>
-                    </nav>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "@class = btn btn-outline-danger " })
+                    </div>
+             </nav>
         </tr>
 }
     </tbody>
