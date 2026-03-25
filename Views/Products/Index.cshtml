@@ -41,11 +41,11 @@
 
                     <nav class="navbar bg-body-tertiary">
                         <div class="d-flex">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "@class = btn btn-success mr-2 " })
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "@class = btn btn-outline-success mr-2 " })
 
-                            @Html.ActionLink("View ", "View ", new { id = item.Id }, new { @class = "@class = btn btn-warning mr-2 " })
+                            @Html.ActionLink("View ", "View ", new { id = item.Id }, new { @class = "@class = btn btn-outline-info mr-2 " })
 
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "@class = btn btn-danger " })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "@class = btn btn-outline-danger " })
                         </div>
                     </nav>
         </tr>
