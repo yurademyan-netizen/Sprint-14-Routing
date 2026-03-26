@@ -1,0 +1,31 @@
+﻿@model int?
+
+@{
+    ViewData["Title"] = "404 - Product Not Found";
+}
+
+<div class="container d-flex flex-column justify-content-center align-items-center shadow-lg rounded p-5 my-5 bg-white border-top border-danger" style="border-width: 5px !important; max-width: 700px;">
+
+    <h1 class="display-1 text-danger fw-bold mb-0">404</h1>
+    <p class="text-muted text-uppercase mb-4" style="letter-spacing: 0.2rem;">Page Not Found</p>
+
+    <h2 class="text-dark mb-3 text-center">
+        The product @(Model.HasValue ? $"with ID {Model}" : "") does not exist
+    </h2>
+
+    <p class="text-secondary text-center mb-5 px-4">
+        We're sorry, but we couldn't find the product you're looking for.
+        It may have been deleted, or the ID provided is incorrect.
+    </p>
+
+    <div class="d-flex gap-3">
+        <a asp-controller="Products" asp-action="Index" class="btn btn-info btn-lg px-4 text-white shadow-sm mr-3">
+            <i class="bi bi-list-ul"></i> Back to the list of all products
+        </a>
+
+        <a asp-controller="Products" asp-action="Create" class="btn btn-outline-success btn-lg px-4 shadow-sm">
+            <i class="bi bi-plus-circle"></i> Create a product
+        </a>
+    </div>
+
+</div>
