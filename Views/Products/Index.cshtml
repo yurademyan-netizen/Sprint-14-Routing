@@ -8,44 +8,54 @@
 <p>
     <a asp-action="Create" class="btn btn-primary btn-lg">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-             <nav class="navbar bg-body-tertiary">
-                    <div class="d-flex">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-outline-success shadow mr-2 " })
 
-                            @Html.ActionLink("View ", "View", new { id = item.Id }, new { @class = "btn btn-outline-info shadow mr-2 " })
-
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-outline-danger shadow " })
-                    </div>
-             </nav>
-        </tr>
+@if (@Model.Count() == 0)
+{
+    <p>There is no products</p>
 }
-    </tbody>
-</table>
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <nav class="navbar bg-body-tertiary">
+                            <div class="d-flex">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-outline-success shadow mr-2 " })
+
+                                @Html.ActionLink("View ", "View", new { id = item.Id }, new { @class = "btn btn-outline-info shadow mr-2 " })
+
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-outline-danger shadow " })
+                            </div>
+                        </nav>
+                    </td>
+              </tr>
+            }
+        </tbody>
+    </table>
+}

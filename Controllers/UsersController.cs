@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Configuration;
 using ProductsWithRouting.Models;
 using ProductsWithRouting.Services;
 using System;
@@ -14,18 +15,26 @@ namespace ProductsWithRouting.Controllers
     public class UsersController : Controller
     {
         private readonly List<User> myUsers;
+        private readonly IConfiguration configuration;
 
-        public UsersController(Data data)
+        public UsersController(Data data, IConfiguration config)
         {
             myUsers = data.Users;
+            configuration = config;
         }
 
         [HttpPost]
         public IActionResult Index([FromBody] string id)
         {
-            if (string.IsNullOrEmpty(id) || id != "df2323eoT")
+            if (string.IsNullOrEmpty(id) || id != configuration["Password"])
             {
-                return Unauthorized();
+                ErrorViewModel model = new ErrorViewModel()
+                {
+                    StatusCode = StatusCodes.Status401Unauthorized,
+                    Message = "Seems you don’t have access to this information"
+                };
+
+                return View("Error", model);
             }
 
             return View(myUsers);
@@ -33,7 +42,7 @@ namespace ProductsWithRouting.Controllers
 
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel { StatusCode = StatusCodes.Status200OK });
         }
 
     }
