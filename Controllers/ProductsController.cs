@@ -45,7 +45,19 @@ namespace ProductsWithRouting.Controllers
         {
             Product product = myProducts.FirstOrDefault(x => x.Id == id);
 
+            //Task 11 - Bobro Mykola
+            if (product is null)
+            {
+                return RedirectToAction("ProductNotFound", new { id = id });
+            }
+            //Task 11 - end
+
             return View(product);
+        }
+
+        public IActionResult ProductNotFound(int? id)
+        {
+            return View(id);
         }
 
         [HttpGet]
