@@ -62,6 +62,7 @@ namespace ProductsWithRouting.Controllers
         }
 
         [HttpGet]
+        [Route("products/edit/{id:int}")]
         public IActionResult Edit(int id)
         {
             Product product = myProducts.FirstOrDefault(x => x.Id == id);
