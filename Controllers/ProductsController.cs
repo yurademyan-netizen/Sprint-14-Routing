@@ -109,6 +109,8 @@ namespace ProductsWithRouting.Controllers
             return View(newProduct);
         }
 
+        [HttpGet]
+        [Route("/products/delete/{id:int}")]
         public IActionResult Delete(int id)
         {
             Product product = myProducts.FirstOrDefault(x => x.Id == id);
